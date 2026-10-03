@@ -1,5 +1,9 @@
 # ComfyUI Mesh Bridge
 
+<img width="1101" height="914" alt="image" src="https://github.com/user-attachments/assets/b561e784-b0a9-4761-8aab-3f51eecd8da3" />
+<img width="954" height="329" alt="image" src="https://github.com/user-attachments/assets/3d02d1db-2e9f-412e-8140-1bd91a7ba970" />
+<img width="1322" height="608" alt="image" src="https://github.com/user-attachments/assets/613df88a-65bb-4876-9101-090dd42c66fc" />
+
 Três nós na categoria `3d/conversion`:
 
 - `mesh_to_trimesh`: MESH nativo do ComfyUI → trimesh.Trimesh (`TRIMESH`).
