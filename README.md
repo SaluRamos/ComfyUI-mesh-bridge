@@ -4,11 +4,15 @@
 <img width="954" height="329" alt="image" src="https://github.com/user-attachments/assets/3d02d1db-2e9f-412e-8140-1bd91a7ba970" />
 <img width="1322" height="608" alt="image" src="https://github.com/user-attachments/assets/613df88a-65bb-4876-9101-090dd42c66fc" />
 
-Três nós na categoria `3d/conversion`:
+Quatro nós na categoria `3d/conversion`:
 
 - `mesh_to_trimesh`: MESH nativo do ComfyUI → trimesh.Trimesh (`TRIMESH`).
 - `trimesh_to_mesh`: trimesh.Trimesh (`TRIMESH`) → MESH nativo do ComfyUI.
 - `model_3d_to_mesh`: `model_3d` (`FILE_3D`) → MESH nativo do ComfyUI.
+- `mesh_to_model3d`: MESH nativo do ComfyUI → `model_3d` (`FILE_3D_GLB`).
+
+Conecte `mesh_to_model3d` a `Preview 3D` ou `Save 3D` para visualizar ou salvar
+a malha em GLB, preservando UVs, texturas, cores e materiais.
 
 Conecte `Load 3D (Advanced) → model_3d_to_mesh → Unwrap Mesh UVs`.
 O novo nó usa o leitor nativo `Get 3D Components`, aceita GLB, GLTF, OBJ e STL,

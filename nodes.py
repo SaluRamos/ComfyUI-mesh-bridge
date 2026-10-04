@@ -1,4 +1,5 @@
-﻿import copy
+import copy
+from io import BytesIO
 
 import numpy as np
 import torch
@@ -6,6 +7,7 @@ import trimesh as trimesh_lib
 from PIL import Image
 from comfy_api.latest import Types
 from comfy_extras.nodes_mesh_io import Get3DComponents
+from comfy_extras.nodes_save_3d import mesh_item_to_glb_bytes
 
 
 def _array(tensor):
@@ -43,6 +45,23 @@ class Model3DToMesh:
     def convert(self, model_3d):
         return (Get3DComponents.execute(model_3d)[0],)
 
+
+class MeshToModel3D:
+    CATEGORY = "3d/conversion"
+    FUNCTION = "convert"
+    RETURN_TYPES = ("FILE_3D_GLB",)
+    RETURN_NAMES = ("model_3d",)
+    DESCRIPTION = "Serialize native ComfyUI MESH as a GLB model_3d, preserving UVs, textures and materials."
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"mesh": ("MESH",)}}
+
+    def convert(self, mesh):
+        glb = mesh_item_to_glb_bytes(mesh, 0)
+        if glb is None:
+            raise ValueError("mesh_to_model3d received an empty mesh.")
+        return (Types.File3D(BytesIO(glb), file_format="glb"),)
 
 class MeshToTrimesh:
     CATEGORY = "3d/conversion"
